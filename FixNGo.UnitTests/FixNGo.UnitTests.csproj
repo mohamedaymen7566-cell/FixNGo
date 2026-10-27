@@ -23,6 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\FixNGo.Domain\FixNGo.Domain.csproj" />
     <ProjectReference Include="..\FixNGo.Application\FixNGo.Application.csproj" />
+    <ProjectReference Include="..\FixNGo.Infrastructure\FixNGo.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
+

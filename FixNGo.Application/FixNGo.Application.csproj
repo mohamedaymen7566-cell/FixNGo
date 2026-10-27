@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\FixNGo.Domain\FixNGo.Domain.csproj" />
@@ -11,3 +11,4 @@
   </PropertyGroup>
 
 </Project>
+

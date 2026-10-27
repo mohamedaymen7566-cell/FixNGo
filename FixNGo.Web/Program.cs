@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // 1. Add Infrastructure & Application Services (Clean Architecture Composition Root)
-builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 // 2. Configure ASP.NET Core Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -42,7 +42,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireRole(UserRole.Admin.ToString()));
 });
 
-// 5. MVC and SignalR
+// 5. MVC Controllers with Razor Views and SignalR
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
 
@@ -74,12 +74,16 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// 8. Endpoints
+// 8. Endpoints: Conventional MVC Views + Attribute-Routed APIs + SignalR Hubs
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllers(); // Enables API controllers ([ApiController]) alongside MVC views
 
 app.MapHub<TrackHub>("/hubs/track");
 app.MapHub<ChatHub>("/hubs/chat");
 
 app.Run();
+
+
