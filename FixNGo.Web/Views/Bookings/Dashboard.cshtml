@@ -103,8 +103,8 @@
         </div>
     </div>
 
-    <!-- Filter Tabs (Visual Only) -->
-    <div class="card shadow-sm border-0 rounded-3 mb-4">
+    <!-- Filter Tabs (Visual Only) — mt-4 adds space between KPI cards and the tabs bar -->
+    <div class="card shadow-sm border-0 rounded-3 mb-4 mt-4">
         <div class="card-header bg-body border-bottom pt-3 pb-0">
             <ul class="nav nav-tabs card-header-tabs border-0" role="tablist">
                 <li class="nav-item">
@@ -158,7 +158,8 @@
                                             <i class="bi bi-person-fill"></i>
                                         </div>
                                         <div>
-                                            <span class="fw-bold d-block text-dark">@booking.CustomerName</span>
+                                            <!-- text-body adapts to light/dark mode automatically, unlike text-dark which is always black -->
+                                            <span class="fw-bold d-block text-body">@booking.CustomerName</span>
                                             <small class="text-muted">Booking #@booking.Id</small>
                                         </div>
                                     </div>
