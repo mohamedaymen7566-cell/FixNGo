@@ -103,8 +103,8 @@
         </div>
     </div>
 
-    <!-- Filter Tabs (Visual Only) — mt-4 adds space between KPI cards and the tabs bar -->
-    <div class="card shadow-sm border-0 rounded-3 mb-4 mt-4">
+    <!-- Filter Tabs (Visual Only) — mt-4 separates tabs from KPI cards above; mb-5 separates from table header below -->
+    <div class="card shadow-sm border-0 rounded-3 mb-5 mt-4">
         <div class="card-header bg-body border-bottom pt-3 pb-0">
             <ul class="nav nav-tabs card-header-tabs border-0" role="tablist">
                 <li class="nav-item">
@@ -158,8 +158,10 @@
                                             <i class="bi bi-person-fill"></i>
                                         </div>
                                         <div>
-                                            <!-- text-body adapts to light/dark mode automatically, unlike text-dark which is always black -->
-                                            <span class="fw-bold d-block text-body">@booking.CustomerName</span>
+                                            <!-- fw-semibold + text-body ensures readable text in both light and dark mode.
+                                                 Bootstrap's text-body uses --bs-body-color which is dark in light mode
+                                                 and light in dark mode — equivalent to Tailwind's text-slate-900 dark:text-white -->
+                                            <span class="fw-semibold d-block text-body">@booking.CustomerName</span>
                                             <small class="text-muted">Booking #@booking.Id</small>
                                         </div>
                                     </div>
