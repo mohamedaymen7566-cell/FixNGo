@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading;
 using FixNGo.Web.Models;
@@ -215,5 +215,38 @@ public class ServiceCentersController : Controller
         TempData["Success"] = "Service added successfully.";
         return RedirectToAction(nameof(Services), new { id = id });
     }
-}
 
+    // ─────────────────────────────────────────────────────────────────────────
+    // SERVICE CENTER PROFILE (Service-Center owner view — static / dummy data)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // GET: /ServiceCenters/Profile
+    public IActionResult Profile(int id = 1)
+    {
+        // Static dummy data for the center profile
+        var model = new CenterProfileViewModel
+        {
+            Id = id,
+            Name = "Al-Nasr Certified Service Center",
+            Phone = "+20 100 123 4567",
+            Email = "contact@alnasr-auto.com",
+            Address = "Nasr City, Cairo, Egypt",
+            Latitude = 30.0561,
+            Longitude = 31.3300,
+            IsActive = true,
+            IsVerified = true
+        };
+
+        return View(model);
+    }
+
+    // POST: /ServiceCenters/Profile
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Profile(CenterProfileViewModel model)
+    {
+        // Static simulation: do not check ModelState, do not save anything
+        TempData["Success"] = "Profile updated successfully.";
+        return RedirectToAction(nameof(Profile), new { id = model.Id });
+    }
+}
