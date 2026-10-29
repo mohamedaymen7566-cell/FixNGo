@@ -134,5 +134,86 @@ public class ServiceCentersController : Controller
         TempData["Success"] = "Document uploaded successfully and queued for administrative review.";
         return RedirectToAction(nameof(VerificationDocuments), new { id = id });
     }
+
+    // GET: /ServiceCenters/Services/1
+    [HttpGet]
+    public IActionResult Services(int id = 1)
+    {
+        // Static mock data for center repair and maintenance services
+        var model = new CenterServicesViewModel
+        {
+            CenterId = id,
+            CenterName = "Al-Nasr Certified Service Center",
+            Services = new List<ServiceItemViewModel>
+            {
+                new()
+                {
+                    Id = 1,
+                    Name = "Oil Change",
+                    Description = "Full synthetic engine oil replacement including high-performance oil filter.",
+                    Price = 650,
+                    IsAvailable = true,
+                    Offer = "15% OFF"
+                },
+                new()
+                {
+                    Id = 2,
+                    Name = "Brake Inspection",
+                    Description = "Comprehensive checkup of brake pads, rotors, drums, and hydraulic fluid levels.",
+                    Price = 250,
+                    IsAvailable = true,
+                    Offer = null
+                },
+                new()
+                {
+                    Id = 3,
+                    Name = "Tire Replacement",
+                    Description = "Professional tire mounting, wheel balancing, and tire pressure adjustment.",
+                    Price = 400,
+                    IsAvailable = true,
+                    Offer = "20% OFF"
+                },
+                new()
+                {
+                    Id = 4,
+                    Name = "Battery Replacement",
+                    Description = "Automotive 12V battery test and installation with terminal cleaning.",
+                    Price = 350,
+                    IsAvailable = false,
+                    Offer = null
+                },
+                new()
+                {
+                    Id = 5,
+                    Name = "Full Car Diagnosis",
+                    Description = "Complete OBD-II computerized electronic diagnostic scan and safety inspection.",
+                    Price = 800,
+                    IsAvailable = true,
+                    Offer = "100 EGP OFF"
+                },
+                new()
+                {
+                    Id = 6,
+                    Name = "AC Repair",
+                    Description = "Air conditioning gas refill, leak inspection, and compressor performance tuning.",
+                    Price = 950,
+                    IsAvailable = true,
+                    Offer = null
+                }
+            }
+        };
+
+        return View(model);
+    }
+
+    // POST: /ServiceCenters/Services
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Services(int id, CenterServicesViewModel input)
+    {
+        // Static simulation: do not save anything, set success notification and redirect back
+        TempData["Success"] = "Service added successfully.";
+        return RedirectToAction(nameof(Services), new { id = id });
+    }
 }
 
