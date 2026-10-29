@@ -249,4 +249,14 @@ public class ServiceCentersController : Controller
         TempData["Success"] = "Profile updated successfully.";
         return RedirectToAction(nameof(Profile), new { id = model.Id });
     }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SERVICE CENTER DASHBOARD HUB (Main management hub for service center)
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // GET: /ServiceCenters/Dashboard
+    public IActionResult Dashboard()
+    {
+        return View();
+    }
 }
